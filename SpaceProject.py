@@ -25,15 +25,15 @@ def keyMove(spaceshipCordinate):
     if pressed[pygame.K_RIGHT]:
         spaceshipCordinate.xCord +=1
     
-def wasdmove(2spaceshipCordinate):
+def wasdmove(secspaceshipCordinate):
     
 
 
-def main():
+    def main():
 # Set up the drawing window
-    screen = pygame.display.set_mode([650, 650])
-    x= 325
-    y=0
+        screen = pygame.display.set_mode([650, 650])
+        x= 325
+        y=0
     spaceshipCordinate = cordinate(465, 570)
     # Run until the user asks to quit
     running = True
@@ -69,3 +69,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# %%
