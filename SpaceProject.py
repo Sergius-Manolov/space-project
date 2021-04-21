@@ -13,21 +13,16 @@ class cordinate():
         self.xCord = xCord
         self.yCord = yCord
 
-
 def keyMove(spaceshipCordinate):
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP]:
-        spaceshipCordinate.yCord -=1
+        spaceshipCordinate.yCord -=4
     if pressed[pygame.K_DOWN]:
-        spaceshipCordinate.yCord +=1
+        spaceshipCordinate.yCord +=4
     if pressed[pygame.K_LEFT]:
-        spaceshipCordinate.xCord -=1
+        spaceshipCordinate.xCord -=4
     if pressed[pygame.K_RIGHT]:
-        spaceshipCordinate.xCord +=1
-    
-def wasdmove(2spaceshipCordinate):
-    
-
+        spaceshipCordinate.xCord +=4
 
 def main():
 # Set up the drawing window
@@ -52,7 +47,6 @@ def main():
         image=pygame.image.load(r'.\space backround.jpg')
         screen.blit(image,(0,0))
                                     
-                                
         # Draw a solid white line in the middle of screen
         pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x,y,5,650))
         
@@ -69,5 +63,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#test az
