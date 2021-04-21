@@ -24,6 +24,9 @@ def keyMove(spaceshipCordinate):
         spaceshipCordinate.xCord -=1
     if pressed[pygame.K_RIGHT]:
         spaceshipCordinate.xCord +=1
+    
+def wasdmove(2spaceshipCordinate):
+    
 
 
 def main():
