@@ -35,7 +35,20 @@ def player2keyMove(spaceship2Cordinate):
     if pressed[pygame.K_d]:
         spaceship2Cordinate.xCord +=4
 
-    def main():
+#class called projectiles to hold the bullets that
+#will come out of the ship
+class projectiles(object):
+    def __init__(self, x,y,radius,color):
+        self.x=x
+        self.y=y
+        self.radius=radius
+        self.color=color
+        self.velocity=8
+
+    def draw(win):
+        pygame.draw.circle(win,self.color(self.x,self.y), self.radius)
+        
+def main():
 # Set up the drawing window
     screen = pygame.display.set_mode([650, 650])
     x= 325
