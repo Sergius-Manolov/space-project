@@ -13,28 +13,35 @@ class cordinate():
         self.xCord = xCord
         self.yCord = yCord
 
-
-def keyMove(spaceshipCordinate):
+def player1keyMove(spaceship1Cordinate):
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP]:
-        spaceshipCordinate.yCord -=1
+        spaceship1Cordinate.yCord -=4
     if pressed[pygame.K_DOWN]:
-        spaceshipCordinate.yCord +=1
+        spaceship1Cordinate.yCord +=4
     if pressed[pygame.K_LEFT]:
-        spaceshipCordinate.xCord -=1
+        spaceship1Cordinate.xCord -=4
     if pressed[pygame.K_RIGHT]:
-        spaceshipCordinate.xCord +=1
-    
-def wasdmove(secspaceshipCordinate):
-    
+        spaceship1Cordinate.xCord +=4
 
+def player2keyMove(spaceship2Cordinate):
+    pressed = pygame.key.get_pressed()
+    if pressed[pygame.K_w]:
+        spaceship2Cordinate.yCord -=4
+    if pressed[pygame.K_s]:
+        spaceship2Cordinate.yCord +=4
+    if pressed[pygame.K_a]:
+        spaceship2Cordinate.xCord -=4
+    if pressed[pygame.K_d]:
+        spaceship2Cordinate.xCord +=4
 
     def main():
 # Set up the drawing window
-        screen = pygame.display.set_mode([650, 650])
-        x= 325
-        y=0
-    spaceshipCordinate = cordinate(465, 570)
+    screen = pygame.display.set_mode([650, 650])
+    x= 325
+    y=0
+    spaceship1Cordinate = cordinate(465, 570)
+    spaceship2Cordinate = cordinate(200, 570)
     # Run until the user asks to quit
     running = True
     while running:
@@ -52,14 +59,19 @@ def wasdmove(secspaceshipCordinate):
         image=pygame.image.load(r'.\space backround.jpg')
         screen.blit(image,(0,0))
                                     
-                                
         # Draw a solid white line in the middle of screen
         pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x,y,5,650))
         
+
         character1 = pygame.image.load(r'.\spaceship1.png')
-        screen.blit(character1,(spaceshipCordinate.xCord,spaceshipCordinate.yCord)) 
-        
-        keyMove(spaceshipCordinate)
+        screen.blit(character1,(spaceship1Cordinate.xCord,spaceship1Cordinate.yCord)) 
+
+        character2 = pygame.image.load(r'.\spaceship2.png')
+        screen.blit(character2,(spaceship2Cordinate.xCord,spaceship2Cordinate.yCord))
+
+
+        player1keyMove(spaceship1Cordinate)
+        player2keyMove(spaceship2Cordinate)
 
         # Flip the display
         pygame.display.flip()
