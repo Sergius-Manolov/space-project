@@ -24,12 +24,12 @@ class cordinate():
 #class called projectiles to hold the bullets that
 #will come out of the ship
 class projectiles(object):
-    def __init__(self, x,y,radius,color):
-        self.x=x
-        self.y=y
-        self.radius=radius
-        self.color=color
-        self.velocity=8
+    def __init__(self, bulletX,bulletY,bulletRadius,bulletColor, bulletVelocity):
+        self.bulletX=bulletX
+        self.bulletY=bulletY
+        self.bulletRadius=bulletRadius
+        self.bulletColor=bulletColor
+        self.bulletVelocity=8
 
     def draw(win):
         pygame.draw.circle(win,self.color(self.x,self.y), self.radius)
@@ -68,6 +68,13 @@ def player1keyMove(spaceship1Cordinate):
         spaceship1Cordinate.xCord -=4
     if pressed[pygame.K_RIGHT]:
         spaceship1Cordinate.xCord +=4
+
+def player1_fire_bullet():
+
+
+def player2_fire_bullet():
+    
+
 
 def player2keyMove(spaceship2Cordinate):
     pressed = pygame.key.get_pressed()

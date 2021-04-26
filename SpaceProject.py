@@ -79,12 +79,14 @@ def main():
         character1 = pygame.image.load(r'.\spaceship1.png')
         screen.blit(character1,(spaceship1Cordinate.xCord,spaceship1Cordinate.yCord)) 
 
+
         character2 = pygame.image.load(r'.\spaceship2.png')
         screen.blit(character2,(spaceship2Cordinate.xCord,spaceship2Cordinate.yCord))
 
 
         player1keyMove(spaceship1Cordinate)
         player2keyMove(spaceship2Cordinate)
+
 
         # Flip the display
         pygame.display.flip()
