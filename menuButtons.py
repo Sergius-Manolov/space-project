@@ -16,10 +16,49 @@ screen = pygame.display.set_mode((650, 650))
  
 font = pygame.font.SysFont(None, 20)
 
+click = False
+
 class cordinate():
     def __init__(self, xCord, yCord):
         self.xCord = xCord
         self.yCord = yCord
+
+#class called projectiles to hold the bullets that
+#will come out of the ship
+class projectiles(object):
+    def __init__(self, x,y,radius,color):
+        self.x=x
+        self.y=y
+        self.radius=radius
+        self.color=color
+        self.velocity=8
+
+    def draw(win):
+        pygame.draw.circle(win,self.color(self.x,self.y), self.radius)
+
+#These are the credits 
+def credits():
+    running = True
+    while running:
+        screen.fill((0,0,0))
+ 
+        draw_text('Credits:', font, (255, 255, 255), screen, 20, 20)
+        draw_text('Adam', font, (255, 255, 255), screen, 250, 160)
+        draw_text('Sergius', font, (255, 255, 255), screen, 250, 180)
+        draw_text('Zach', font, (255, 255, 255), screen, 250, 200)
+        draw_text('Press "esc" for main menu.', font, (255, 255, 255), screen, 20, 560)
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+        
+
+        pygame.display.update()
+        mainClock.tick(60)
+ 
 
 def player1keyMove(spaceship1Cordinate):
     pressed = pygame.key.get_pressed()
@@ -43,26 +82,11 @@ def player2keyMove(spaceship2Cordinate):
     if pressed[pygame.K_d]:
         spaceship2Cordinate.xCord +=4
 
-#class called projectiles to hold the bullets that
-#will come out of the ship
-class projectiles(object):
-    def __init__(self, x,y,radius,color):
-        self.x=x
-        self.y=y
-        self.radius=radius
-        self.color=color
-        self.velocity=8
-
-    def draw(win):
-        pygame.draw.circle(win,self.color(self.x,self.y), self.radius)
-
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
- 
-click = False
  
 def main_menu():
     while True:
@@ -82,7 +106,7 @@ def main_menu():
 
         if button_1.collidepoint((mx, my)):
             if click:
-                game()
+                main()
         if button_2.collidepoint((mx, my)):
             if click:
                 credits()
@@ -106,9 +130,8 @@ def main_menu():
         pygame.display.update()
         mainClock.tick(60)
 
-
 #This is the game 
-def game():
+def main():
 
     # Set up the drawing window
     screen = pygame.display.set_mode([650, 650])
@@ -120,13 +143,15 @@ def game():
     running = True
     while running:
         
-        clock= pygame.time.Clock()
+        clock = pygame.time.Clock()
         
         # Did the user click the window close button?
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 clock.tick(60)
+
+        main_menu()
 
         # set backround as image from the web
         screen.fill((255, 2, 255))
@@ -163,28 +188,7 @@ def game():
         pygame.display.update()
         mainClock.tick(60)
 
+    
 
-#These are the credits 
-def credits():
-    running = True
-    while running:
-        screen.fill((0,0,0))
- 
-        draw_text('Credits:', font, (255, 255, 255), screen, 20, 20)
-        draw_text('Adam', font, (255, 255, 255), screen, 250, 160)
-        draw_text('Sergius', font, (255, 255, 255), screen, 250, 180)
-        draw_text('Zach', font, (255, 255, 255), screen, 250, 200)
-        draw_text('Press "esc" for main menu.', font, (255, 255, 255), screen, 20, 560)
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    running = False
-        
-
-        pygame.display.update()
-        mainClock.tick(60)
- 
-main_menu()
+if __name__ == "__main__":
+    main()
