@@ -14,7 +14,7 @@ pygame.display.set_caption('Space PvP')
 #Size of game screen
 screen = pygame.display.set_mode((720, 720))
  
-font = pygame.font.SysFont(None, 20)
+font = pygame.font.SysFont(None, 40)
 
 class cordinate():
     def __init__(self, xCord, yCord):
