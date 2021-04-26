@@ -123,21 +123,25 @@ def main_menu():
         mx, my = pygame.mouse.get_pos()
 
 
-# !!!!! Need to figure out how to move "Play" and "Credits" text over the botton and not under the button
+        #button rectangle position
         button_1 = pygame.Rect(230, 100, 200, 50)
-        draw_text('Play', font, (255, 255, 255), screen, 170, 100)
         button_2 = pygame.Rect(230, 200, 200, 50)
-        draw_text('Credits', font, (255, 255, 255), screen, 190, 200)
 
-
+        #button click to main or credits screen
         if button_1.collidepoint((mx, my)):
             if click:
                 main()
         if button_2.collidepoint((mx, my)):
             if click:
                 credits()
+
+        #button rectangle color        
         pygame.draw.rect(screen, (0, 0, 255), button_1)
         pygame.draw.rect(screen, (0, 0, 255), button_2)
+        
+        #draw text ontop of button
+        draw_text('Play', font, (255, 255, 255), screen, 190, 100)
+        draw_text('Credits', font, (255, 255, 255), screen, 190, 200)
         
  
         click = False
@@ -194,12 +198,13 @@ def main():
         player1keyMove(spaceship1Cordinate)
         player2keyMove(spaceship2Cordinate)
 
-        # Flip the display
+        #Flip the display
         pygame.display.flip()
 
 
 #Pressing esc will Return to main menu        
-        draw_text('Press "esc" for main menu.', font, (255, 255, 255), screen, 20, 20)
+        fontesc = pygame.font.SysFont(None, 20)
+        draw_text('Press "esc" for main menu.', fontesc, (255, 255, 255), screen, 20, 20)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
