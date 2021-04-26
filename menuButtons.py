@@ -9,7 +9,7 @@ from pygame.locals import *
 pygame.init()
 
 #Display game name in top bar of window
-pygame.display.set_caption('Space Fighters')
+pygame.display.set_caption('Space PvP')
 
 #Size of game screen
 screen = pygame.display.set_mode((720, 720))
@@ -116,8 +116,10 @@ def main_menu():
 
     while True:
 
-        screen.fill((0,0,0))
-        draw_text('Space Fighters - Main Menu', font, (255, 255, 255), screen, 240, 20)
+        screen.fill((255, 2, 255))
+        image=pygame.image.load(r'.\intro background.jpg')
+        screen.blit(image,(0,0))
+        draw_text('Space PvP - Main Menu', font, (255, 255, 255), screen, 240, 20)
         mx, my = pygame.mouse.get_pos()
 
 
