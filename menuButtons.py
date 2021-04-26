@@ -12,7 +12,7 @@ pygame.init()
 pygame.display.set_caption('Space Fighters')
 
 #Size of game screen
-screen = pygame.display.set_mode((650, 650))
+screen = pygame.display.set_mode((720, 720))
  
 font = pygame.font.SysFont(None, 20)
 
@@ -61,37 +61,56 @@ def credits():
 def player1keyMove(spaceship1Cordinate):
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP]:
+        if spaceship1Cordinate.yCord <= 5:
+            spaceship1Cordinate.yCord = 5
         spaceship1Cordinate.yCord -=4
     if pressed[pygame.K_DOWN]:
+        if spaceship1Cordinate.yCord >= 650:
+            spaceship1Cordinate.yCord = 650
         spaceship1Cordinate.yCord +=4
     if pressed[pygame.K_LEFT]:
+        if spaceship1Cordinate.xCord <= 375:
+            spaceship1Cordinate.xCord = 375
         spaceship1Cordinate.xCord -=4
     if pressed[pygame.K_RIGHT]:
+        if spaceship1Cordinate.xCord >= 670:
+            spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
 
-def player1_fire_bullet():
+#def player1_fire_bullet():
 
 
-def player2_fire_bullet():
+#def player2_fire_bullet():
     
 
 
 def player2keyMove(spaceship2Cordinate):
+
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_w]:
+        if spaceship2Cordinate.yCord <= 5:
+            spaceship2Cordinate.yCord = 5
         spaceship2Cordinate.yCord -=4
     if pressed[pygame.K_s]:
+        if spaceship2Cordinate.yCord >= 650:
+            spaceship2Cordinate.yCord = 650
         spaceship2Cordinate.yCord +=4
     if pressed[pygame.K_a]:
+        if spaceship2Cordinate.xCord <= 0:
+            spaceship2Cordinate.xCord = 0
         spaceship2Cordinate.xCord -=4
     if pressed[pygame.K_d]:
+        if spaceship2Cordinate.xCord >= 295:
+            spaceship2Cordinate.xCord = 295
         spaceship2Cordinate.xCord +=4
+
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
+
 
 def main_menu():
 
@@ -139,11 +158,11 @@ def main_menu():
 def main():
     
     # Set up the drawing window
-    screen = pygame.display.set_mode([650, 650])
-    x= 325
+    screen = pygame.display.set_mode([720, 720])
+    x= 365
     y=0
-    spaceship1Cordinate = cordinate(465, 570)
-    spaceship2Cordinate = cordinate(200, 570)
+    spaceship1Cordinate = cordinate(530, 390)
+    spaceship2Cordinate = cordinate(170, 390)
     # Run until the user asks to quit
     running = True
     while running:
@@ -156,23 +175,19 @@ def main():
                 running = False
                 clock.tick(60)
 
-        
-
         # set backround as image from the web
         screen.fill((255, 2, 255))
         image=pygame.image.load(r'.\space backround.jpg')
         screen.blit(image,(0,0))
                                     
         # Draw a solid white line in the middle of screen
-        pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x,y,5,650))
-        
+        pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x,y,5,720))
 
         character1 = pygame.image.load(r'.\spaceship1.png')
         screen.blit(character1,(spaceship1Cordinate.xCord,spaceship1Cordinate.yCord)) 
 
         character2 = pygame.image.load(r'.\spaceship2.png')
         screen.blit(character2,(spaceship2Cordinate.xCord,spaceship2Cordinate.yCord))
-
 
         player1keyMove(spaceship1Cordinate)
         player2keyMove(spaceship2Cordinate)
