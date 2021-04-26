@@ -16,8 +16,6 @@ screen = pygame.display.set_mode((650, 650))
  
 font = pygame.font.SysFont(None, 20)
 
-click = False
-
 class cordinate():
     def __init__(self, xCord, yCord):
         self.xCord = xCord
@@ -87,10 +85,11 @@ def draw_text(text, font, color, surface, x, y):
     textrect = textobj.get_rect()
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
- 
+
 def main_menu():
+
     while True:
- 
+
         screen.fill((0,0,0))
         draw_text('Space Fighters - Main Menu', font, (255, 255, 255), screen, 240, 20)
         mx, my = pygame.mouse.get_pos()
@@ -102,7 +101,6 @@ def main_menu():
         button_2 = pygame.Rect(230, 200, 200, 50)
         draw_text('Credits', font, (255, 255, 255), screen, 190, 200)
 
-        
 
         if button_1.collidepoint((mx, my)):
             if click:
@@ -132,7 +130,7 @@ def main_menu():
 
 #This is the game 
 def main():
-
+    
     # Set up the drawing window
     screen = pygame.display.set_mode([650, 650])
     x= 325
@@ -151,7 +149,7 @@ def main():
                 running = False
                 clock.tick(60)
 
-        main_menu()
+        
 
         # set backround as image from the web
         screen.fill((255, 2, 255))
@@ -189,6 +187,6 @@ def main():
         mainClock.tick(60)
 
     
-
 if __name__ == "__main__":
+    main_menu()
     main()
