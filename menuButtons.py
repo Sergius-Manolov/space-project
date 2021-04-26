@@ -97,7 +97,9 @@ def main_menu():
 
     while True:
 
-        screen.fill((0,0,0))
+        screen.fill((255, 2, 255))
+        image=pygame.image.load(r'.\intro background.jpg')
+        screen.blit(image,(0,0))
         draw_text('Space PvP - Main Menu', font, (255, 255, 255), screen, 240, 20)
         mx, my = pygame.mouse.get_pos()
 
