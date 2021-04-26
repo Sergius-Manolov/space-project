@@ -115,17 +115,17 @@ def draw_text(text, font, color, surface, x, y):
 def main_menu():
 
     while True:
-
+        #menu background and text
         screen.fill((255, 2, 255))
         image=pygame.image.load(r'.\intro background.jpg')
         screen.blit(image,(0,0))
-        draw_text('Space PvP - Main Menu', font, (255, 255, 255), screen, 240, 20)
+        draw_text('Space PvP - Main Menu', font, (255, 255, 255), screen, 200, 20)
         mx, my = pygame.mouse.get_pos()
 
 
         #button rectangle position
-        button_1 = pygame.Rect(230, 100, 200, 50)
-        button_2 = pygame.Rect(230, 200, 200, 50)
+        button_1 = pygame.Rect(260, 100, 200, 50)
+        button_2 = pygame.Rect(260, 200, 200, 50)
 
         #button click to main or credits screen
         if button_1.collidepoint((mx, my)):
@@ -140,8 +140,8 @@ def main_menu():
         pygame.draw.rect(screen, (0, 0, 255), button_2)
         
         #draw text ontop of button
-        draw_text('Play', font, (255, 255, 255), screen, 190, 100)
-        draw_text('Credits', font, (255, 255, 255), screen, 190, 200)
+        draw_text('Play', font, (255, 255, 255), screen, 330, 110)
+        draw_text('Credits', font, (255, 255, 255), screen, 310, 212)
         
  
         click = False
