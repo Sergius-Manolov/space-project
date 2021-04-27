@@ -183,7 +183,7 @@ def main():
 
         # set backround as image from the web
         screen.fill((255, 2, 255))
-        image=pygame.image.load(r'.\space backround.jpg')
+        image=pygame.image.load(r'.\space backround resize.jpg')
         screen.blit(image,(0,0))
                                     
         # Draw a solid white line in the middle of screen
