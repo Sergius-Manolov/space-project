@@ -39,11 +39,12 @@ def credits():
     running = True
     while running:
         screen.fill((0,0,0))
- 
+        image=pygame.image.load(r'.\credits background.jpg')
+        screen.blit(image,(0,0))
         draw_text('Credits:', font, (255, 255, 255), screen, 20, 20)
-        draw_text('Adam', font, (255, 255, 255), screen, 250, 160)
-        draw_text('Sergius', font, (255, 255, 255), screen, 250, 180)
-        draw_text('Zach', font, (255, 255, 255), screen, 250, 200)
+        draw_text('Adam Zakrzewski', font, (255, 255, 255), screen, 250, 170)
+        draw_text('Sergius Manolov', font, (255, 255, 255), screen, 250, 210)
+        draw_text('Zach Harris', font, (255, 255, 255), screen, 250, 250)
         draw_text('Press "esc" for main menu.', font, (255, 255, 255), screen, 20, 560)
         for event in pygame.event.get():
             if event.type == QUIT:
