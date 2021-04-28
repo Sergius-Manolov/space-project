@@ -78,6 +78,8 @@ def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
             spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
     if pressed[pygame.K_SPACE]:
+        bulletX = spaceship1Cordinate.xCord
+        bulletY = spaceship1Cordinate.yCord
         fire_bullet(bulletX, bulletY)
 
 def fire_bullet(x, y):
@@ -173,8 +175,8 @@ def main():
 
     global bulletImg
     bulletImg = pygame.image.load('bullet.png')
-    bulletX = spaceship1Cordinate.xCord
-    bulletY = spaceship1Cordinate.yCord
+    bulletX = 0
+    bulletY = 0
     bulletX_change = 10
     bulletY_change = 0
     bullet_state = "ready"
@@ -211,7 +213,7 @@ def main():
         #Bullet Movement
         if bullet_state == "fire":
             fire_bullet(bulletX, bulletY)
-            bulletY -= bulletY_change
+            bulletX = bulletX - bulletX_change
 
         #Flip the display
         pygame.display.flip()
