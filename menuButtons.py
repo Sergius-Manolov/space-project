@@ -59,7 +59,7 @@ def credits():
         mainClock.tick(60)
  
 
-def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
+def player1keyMove(spaceship1Cordinate):
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP]:
         if spaceship1Cordinate.yCord <= 5:
@@ -78,17 +78,11 @@ def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
             spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
     if pressed[pygame.K_RCTRL]:
-        bulletX = spaceship1Cordinate.xCord
-        bulletY = spaceship1Cordinate.yCord
-        fire_bullet(bulletX, bulletY)
-
-def fire_bullet(x, y):
-    global bullet_state
-    bullet_state = "fire"
-    screen.blit(bulletImg, (x, y))
+        bullet1X = (spaceship1Cordinate.xCord + 20)
+        bullet1Y = (spaceship1Cordinate.yCord + 20)
+        fire_bullet1(bullet1X, bullet1Y)
 
 def player2keyMove(spaceship2Cordinate):
-
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_w]:
         if spaceship2Cordinate.yCord <= 5:
@@ -107,9 +101,19 @@ def player2keyMove(spaceship2Cordinate):
             spaceship2Cordinate.xCord = 295
         spaceship2Cordinate.xCord +=4
     if pressed[pygame.K_LCTRL]:
-        bulletX = spaceship2Cordinate.xCord
-        bulletY = spaceship2Cordinate.yCord
-        fire_bullet(bulletX, bulletY)
+        bullet2X = (spaceship2Cordinate.xCord + 20)
+        bullet2Y = (spaceship2Cordinate.yCord + 20)
+        fire_bullet2(bullet2X, bullet2Y)
+
+def fire_bullet1(x, y):
+    global bullet1_state
+    bullet1_state = "fire"
+    screen.blit(bulletImg1, (x, y))
+
+def fire_bullet2(x, y):
+    global bullet2_state
+    bullet2_state = "fire"
+    screen.blit(bulletImg2, (x, y))
 
 
 def draw_text(text, font, color, surface, x, y):
@@ -177,13 +181,20 @@ def main():
     spaceship1Cordinate = cordinate(530, 390)
     spaceship2Cordinate = cordinate(170, 390)
 
-    global bulletImg
-    bulletImg = pygame.image.load('bullet.png')
-    bulletX = 0
-    bulletY = 0
-    bulletX_change = 10
-    bulletY_change = 0
-    bullet_state = "ready"
+    global bulletImg1
+    bulletImg1 = pygame.image.load('bullet1.png')
+    global bulletImg2
+    bulletImg2 = pygame.image.load('bullet2.png')
+    bullet1X = 0
+    bullet2X = 0
+    bullet1Y = 0
+    bullet2Y = 0
+    bullet1X_change = 10
+    bullet1Y_change = 0
+    bullet2X_change = 10
+    bullet2Y_change = 0
+    bullet1_state = "ready"
+    bullet2_state = "ready"
 
     # Run until the user asks to quit
     running = True
@@ -211,13 +222,18 @@ def main():
         character2 = pygame.image.load(r'.\spaceship2.png')
         screen.blit(character2,(spaceship2Cordinate.xCord,spaceship2Cordinate.yCord))
 
-        player1keyMove(spaceship1Cordinate, bulletX, bulletY)
+        player1keyMove(spaceship1Cordinate)
         player2keyMove(spaceship2Cordinate)
 
-        #Bullet Movement
-        if bullet_state == "fire":
-            fire_bullet(bulletX, bulletY)
-            bulletX = bulletX - bulletX_change
+        #Bullet1 Movement
+        if bullet1_state is "fire":
+            fire_bullet1(x, y)
+            bullet1X = bullet1X + 10
+
+        #Bullet2 Movement
+        if bullet2_state is "fire":
+            fire_bullet2(x, y)
+            bullet2X = bullet2X + 10
 
         #Flip the display
         pygame.display.flip()
