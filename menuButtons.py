@@ -77,10 +77,8 @@ def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
         if spaceship1Cordinate.xCord >= 670:
             spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
-
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_SPACE:
-            fire_bullet(bulletX, bulletY)
+    if pressed[pygame.K_SPACE]:
+        fire_bullet(bulletX, bulletY)
 
 def fire_bullet(x, y):
     global bullet_state
