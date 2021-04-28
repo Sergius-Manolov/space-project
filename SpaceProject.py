@@ -7,6 +7,10 @@
 # Import and initialize the pygame library
 import pygame
 pygame.init()
+from pygame import mixer
+# Sound
+mixer.music.load("background.wav")
+mixer.music.play(-1)
 
 screen = pygame.display.set_mode([650, 650])
 x= 325
@@ -78,13 +82,14 @@ def player2keyMove(spaceship2Cordinate):
         spaceship2Cordinate.xCord +=4
 
 def main():
-    bullets= []
+    
 # Set up the drawing window
     screen = pygame.display.set_mode([650, 650])
     x= 325
     y=0
     spaceship1Cordinate = cordinate(465, 570)
     spaceship2Cordinate = cordinate(200, 570)
+    bullets= []
     # Run until the user asks to quit
     running = True
     while running:

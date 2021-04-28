@@ -1,5 +1,6 @@
 #Import Pygame
 import pygame, sys
+from pygame import mixer
 
 # Game Clock
 mainClock = pygame.time.Clock()
@@ -126,12 +127,15 @@ def draw_text(text, font, color, surface, x, y):
 def main_menu():
 
     while True:
+
+        
         #menu background and text
         screen.fill((255, 2, 255))
         image=pygame.image.load(r'.\intro background.jpg')
         screen.blit(image,(0,0))
         draw_text('Space PvP - Main Menu', font, (255, 255, 255), screen, 200, 20)
         mx, my = pygame.mouse.get_pos()
+
 
 
         #button rectangle position
@@ -173,6 +177,10 @@ def main_menu():
 
 #This is the game 
 def main():
+    
+    # Sound
+    mixer.music.load("background.wav")
+    mixer.music.play(-1)
     
     # Set up the drawing window
     screen = pygame.display.set_mode([720, 720])
