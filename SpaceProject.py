@@ -28,8 +28,8 @@ class cordinate():
         self.yCord = yCord
 
     def draw(self,screen):
-            screen.blit(character1,(spaceship1Cordinate.xCord,spaceship1Cordinate.yCord))
-            screen.blit(character2)
+        screen.blit(character1,(spaceship1Cordinate.xCord,spaceship1Cordinate.yCord))
+        screen.blit(character2,(spaceship2Cordinate.xCord, spaceship2Cordinate.yCord))
 
 #class called projectiles to hold the bullets that
 #will come out of the ship
@@ -41,7 +41,7 @@ class projectiles(object):
         self.color=color
         self.velocity=8
 
-    def draw(self,screen):
+    def drawBullet(self,screen):
         pygame.draw.circle(screen,self.color(self.x,self.y), self.radius)
 
 def redrawGameWindow():
@@ -105,7 +105,7 @@ def main():
         # set backround as image from the web
         screen.fill((255, 2, 255))
         image=pygame.image.load(r'.\space backround.jpg')
-        screen.blit(image,(0,0))
+        #screen.blit(image,(0,0))
                                     
         # Draw a solid white line in the middle of screen
         pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(x,y,5,650))
