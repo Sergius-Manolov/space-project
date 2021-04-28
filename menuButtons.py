@@ -59,7 +59,7 @@ def credits():
         mainClock.tick(60)
  
 
-def player1keyMove(spaceship1Cordinate):
+def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_UP]:
         if spaceship1Cordinate.yCord <= 5:
@@ -68,7 +68,7 @@ def player1keyMove(spaceship1Cordinate):
     if pressed[pygame.K_DOWN]:
         if spaceship1Cordinate.yCord >= 650:
             spaceship1Cordinate.yCord = 650
-        spaceship1Cordinate.yCord +=4
+        spaceship1Cordinate.yCord +=4 
     if pressed[pygame.K_LEFT]:
         if spaceship1Cordinate.xCord <= 375:
             spaceship1Cordinate.xCord = 375
@@ -78,12 +78,14 @@ def player1keyMove(spaceship1Cordinate):
             spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
 
-#def player1_fire_bullet():
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE:
+            fire_bullet(bulletX, bulletY)
 
-
-#def player2_fire_bullet():
-    
-
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = "fire"
+    screen.blit(bulletImg, (x, y))
 
 def player2keyMove(spaceship2Cordinate):
 
@@ -170,6 +172,15 @@ def main():
     y=0
     spaceship1Cordinate = cordinate(530, 390)
     spaceship2Cordinate = cordinate(170, 390)
+
+    global bulletImg
+    bulletImg = pygame.image.load('bullet.png')
+    bulletX = spaceship1Cordinate.xCord
+    bulletY = spaceship1Cordinate.yCord
+    bulletX_change = 10
+    bulletY_change = 0
+    bullet_state = "ready"
+
     # Run until the user asks to quit
     running = True
     while running:
@@ -196,8 +207,13 @@ def main():
         character2 = pygame.image.load(r'.\spaceship2.png')
         screen.blit(character2,(spaceship2Cordinate.xCord,spaceship2Cordinate.yCord))
 
-        player1keyMove(spaceship1Cordinate)
+        player1keyMove(spaceship1Cordinate, bulletX, bulletY)
         player2keyMove(spaceship2Cordinate)
+
+        #Bullet Movement
+        if bullet_state == "fire":
+            fire_bullet(bulletX, bulletY)
+            bulletY -= bulletY_change
 
         #Flip the display
         pygame.display.flip()
