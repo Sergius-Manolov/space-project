@@ -77,7 +77,7 @@ def player1keyMove(spaceship1Cordinate, bulletX, bulletY):
         if spaceship1Cordinate.xCord >= 670:
             spaceship1Cordinate.xCord = 670
         spaceship1Cordinate.xCord +=4
-    if pressed[pygame.K_SPACE]:
+    if pressed[pygame.K_RCTRL]:
         bulletX = spaceship1Cordinate.xCord
         bulletY = spaceship1Cordinate.yCord
         fire_bullet(bulletX, bulletY)
@@ -106,6 +106,10 @@ def player2keyMove(spaceship2Cordinate):
         if spaceship2Cordinate.xCord >= 295:
             spaceship2Cordinate.xCord = 295
         spaceship2Cordinate.xCord +=4
+    if pressed[pygame.K_LCTRL]:
+        bulletX = spaceship2Cordinate.xCord
+        bulletY = spaceship2Cordinate.yCord
+        fire_bullet(bulletX, bulletY)
 
 
 def draw_text(text, font, color, surface, x, y):
